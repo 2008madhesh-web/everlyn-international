@@ -1,54 +1,24 @@
-# Everlyn Internationals — website
+# Everlyn International website
 
-Luxury import & export website with a scroll-driven 3D story (cargo → crane → sunset departure → night globe → night arrival), built with Next.js 16, React Three Fiber, GSAP and Framer Motion.
+A static one-page site for Everlyn International: high-purity swimming pool salt exported from India for resorts, hotels and water treatment companies.
 
-## Requirements
+There is no build step. `index.html` is the page; `assets/` holds its styles, scripts, logo, intro film and photographs; `credits.html` lists the photograph licences.
 
-- [Node.js](https://nodejs.org) **20.9 or newer** (22 LTS recommended)
+## Run it locally
 
-## Run it on your computer
+Serve the folder with any static server, for example:
 
-```bash
-npm install
-npm run dev
+```
+python -m http.server 8000
 ```
 
-Then open http://localhost:3000.
+Then open http://localhost:8000.
 
-## Production build
+## Deploy
 
-```bash
-npm run build
-npm start
-```
+Vercel serves the folder as-is (see `vercel.json`: no framework, no install, no build).
 
-## Deploy (recommended: Vercel, free)
+## Still to replace
 
-1. Push this folder to a GitHub repository.
-2. Go to https://vercel.com/new, sign in with GitHub and import the repository.
-3. Keep the defaults (Framework: Next.js) and click **Deploy**.
-
-Any host that runs Node.js works too (Netlify, Render, a VPS with `npm run build && npm start`).
-
-## Where to edit things
-
-| What | File |
-| --- | --- |
-| Company name, contact details, products, stats, testimonials, FAQs | `src/content/site.ts` (placeholders are marked `TODO`) |
-| Home page 3D story timeline (camera, ship, sunset, night) | `src/lib/story.ts` |
-| Home page text panels | `src/components/home/StoryPanels.tsx` |
-| Loading screen | `src/components/home/Loader.tsx` |
-| Other pages | `src/app/<page>/page.tsx` |
-| Colours and fonts | `src/app/globals.css`, `src/app/layout.tsx` |
-| Logo image | `public/brand/everlyn-logo.jpg` |
-
-## Before going live
-
-- Replace every `TODO` in `src/content/site.ts` (address, phone, email, WhatsApp, IEC/GST, social links, domain).
-- Replace the sample stats, testimonials and certifications with real ones.
-- Contact and quote forms currently log submissions on the server (`src/app/api/enquiry/route.ts`). Connect an email service (e.g. Resend) there to receive them by email.
-- Have the Privacy Policy and Terms pages reviewed.
-
-## Credits
-
-Sky and material textures in `public/hdri` and `public/textures` are from [Poly Haven](https://polyhaven.com), CC0 (public domain).
+- `quotes@everlyn.example` and `hello@everlyn.example` in `index.html`: the real email addresses, or a form service on the quote form's `data-endpoint`.
+- The stand-in photographs in `assets/img/` (credited in `credits.html`).
