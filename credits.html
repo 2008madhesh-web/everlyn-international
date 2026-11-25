@@ -6,8 +6,8 @@
 <title>Everlyn International: photograph credits</title>
 <meta name="description" content="The photographers, licences and source pages of the photographs on the Everlyn International website.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Everlyn International: pool salt from India for hotels and resorts">
-<meta property="og:description" content="High-purity swimming pool salt for saltwater chlorination, exported from India.">
+<meta property="og:title" content="Everlyn International: salt exporter in Tuticorin, India">
+<meta property="og:description" content="Pool salt, industrial salt, calcium chloride and other Indian products, exported from Tuticorin.">
 <meta property="og:image" content="assets/brand/everlyn-logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/brand/everlyn-mark-green.png" type="image/png">
@@ -49,16 +49,10 @@
   /* the client's logo: the four-leaf mark beside EVERLYN / INTERNATIONAL in spaced capitals, as the logo sets it */
   .brand { display: inline-flex; align-items: center; gap: 10px; }
   .brand__mark { width: 30px; height: auto; display: block; }
-  .brand__name { display: flex; flex-direction: column; font-family: var(--font-display); font-size: 19px; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; }
+  @media (max-width: 639px) { .brand__mark { width: 26px; } .nav .brand__name { font-size: 16px; letter-spacing: 0.16em; } }
+  @media (max-width: 359px) { .nav .brand__name { display: none; } }
+  .brand__name { display: inline-flex; flex-direction: column; font-family: var(--font-display); font-size: 19px; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; }
   .brand__name small { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.3em; margin-top: 5px; }
-  /* intro: the client's logo film plays once a visit over the page, on the film's own cream */
-  .intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #f4efdf; transition: opacity 700ms ease, visibility 0s linear 700ms; }
-  .intro__video { width: 100%; height: 100%; object-fit: contain; }
-  @media (max-aspect-ratio: 9/16) { .intro__video { object-fit: cover; } }
-  .intro__skip { position: absolute; right: var(--gut, 24px); bottom: calc(24px + env(safe-area-inset-bottom)); min-height: 44px; padding: 0 18px; border: 1px solid color-mix(in oklab, #0c2811 30%, transparent); border-radius: 999px; background: transparent; color: #0c2811; font: 500 14px/1 var(--font-text); cursor: pointer; }
-  .intro__skip:hover { background: color-mix(in oklab, #0c2811 8%, transparent); }
-  .intro.is-done { opacity: 0; visibility: hidden; }
-  html.intro-on, html.intro-on body { overflow: hidden; }
   /* route tracker in #model: the fill and the cargo mark move to the open step (a state change, not a scroll scrub) */
   @media (min-width: 1024px) { main > #model.is-live > .mo-pc__grid { align-content: start; padding-top: var(--padt); } }
   .route { display: none; }
@@ -132,33 +126,6 @@
 </style>
 </head>
 <body>
-<!-- intro: the client's 8 s logo film, once a visit (sessionStorage); Skip ends it, so does a film that will not play;
-     under reduced motion it is not shown -->
-<div class="intro" id="intro">
-  <video class="intro__video" src="assets/brand/everlyn-intro.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-  <button class="intro__skip" type="button">Skip intro</button>
-</div>
-<script>
-(() => {
-  const el = document.getElementById('intro'), html = document.documentElement;
-  let seen = false; try { seen = sessionStorage.getItem('everlyn-intro') === '1'; } catch (e) {}
-  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
-  html.classList.add('intro-on');
-  const video = el.querySelector('video'); let done = false;
-  const end = () => {
-    if (done) return; done = true;
-    try { sessionStorage.setItem('everlyn-intro', '1'); } catch (e) {}
-    el.classList.add('is-done'); html.classList.remove('intro-on');
-    setTimeout(() => el.remove(), 800);
-  };
-  el.querySelector('.intro__skip').addEventListener('click', end);
-  addEventListener('keydown', e => { if (e.key === 'Escape') end(); });
-  video.addEventListener('ended', end);
-  video.addEventListener('error', end);
-  const p = video.play(); if (p && p.catch) p.catch(() => setTimeout(end, 600));
-  setTimeout(end, 10000);   // never longer than the film and a little more
-})();
-</script>
 <!-- type: service
      deal: hero photo (calm left, boxed), nav nav-centre, close close-type, footer footer-dark, rhythm surface-pairs,
            buttons arrow, mark ring, grounds none (kind other: flat colour and photographs)
@@ -166,16 +133,16 @@
      type newsreader (Newsreader / Hanken Grotesk)
      moments: pinned-chapters in #model (the business model, four steps, follows the scroll: requested by the client),
               word-highlight in #promise (the one statement; slowed to the widest range, from 1 to 0, and a long colour fade, at the client's request)
-     Copy from the client's brief (India-based exporter; pool salt supply partnerships). Logo, name and intro film are the client's own (assets/brand);
+     Copy from the client's brief (export company in Tuticorin, founded by Deveash; specialises in salts, clients in the Maldives; sources other Indian products on request). Logo and name are the client's own (assets/brand);
      every photograph is a licensed stand-in. -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Skip to content</a>
-    <a class="nav__logo brand" href="#top"><img class="brand__mark" src="assets/brand/everlyn-mark-green.png" alt="" width="135" height="123"><span class="brand__name">Everlyn<small>International</small></span></a>
+    <a class="nav__logo brand" href="#top" aria-label="Everlyn International"><img class="brand__mark" src="assets/brand/everlyn-mark-green.png" alt="" width="135" height="123"><span class="brand__name">Everlyn</span></a>
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#model">How it works</a></div>
-      <div class="nav__item"><a class="nav__link" href="#services">Pool salt</a></div>
+      <div class="nav__item"><a class="nav__link" href="#services">Salts</a></div>
       <div class="nav__item"><a class="nav__link" href="#about">About us</a></div>
       <div class="nav__item"><a class="nav__link" href="#questions">Questions</a></div>
     </nav>
@@ -210,8 +177,8 @@
   <div class="wrap">
     <div class="closing__cta close--type">
       <div class="section-head">
-        <h2 id="close-h">Start a regular pool salt supply</h2>
-        <p>For resorts, hotels and water treatment companies.</p>
+        <h2 id="close-h">Start a regular salt supply from India</h2>
+        <p>Pool salt, industrial salt, calcium chloride and other Indian products.</p>
       </div>
       <a class="btn btn--primary btn--xl btn--wide" href="#quote">Request a quote<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>
@@ -219,9 +186,9 @@
       <div class="grid">
         <div class="span-4 stack-4">
           <a class="nav__logo brand" href="#top"><img class="brand__mark" src="assets/brand/everlyn-mark-cream.png" alt="" width="135" height="123"><span class="brand__name">Everlyn<small>International</small></span></a>
-          <p class="footer__lede">Quality Indian products for the global market, now with pool salt for saltwater chlorination.</p>
+          <p class="footer__lede">Export company in Tuticorin, India. Salts for resorts, hotels and water treatment, and other Indian products on request.</p>
         </div>
-        <div class="span-2 start-9 footer__col"><h3>Company</h3><ul><li><a href="#model">How it works</a></li><li><a href="#services">Pool salt</a></li><li><a href="#about">About us</a></li></ul></div>
+        <div class="span-2 start-9 footer__col"><h3>Company</h3><ul><li><a href="#model">How it works</a></li><li><a href="#services">Salts</a></li><li><a href="#about">About us</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="#quote">Request a quote</a></li><li><a href="#questions">Questions</a></li><li><a href="mailto:hello@everlyn.example">Write to us</a></li></ul></div>
       </div>
       <div class="footer__legal">
